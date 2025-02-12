@@ -10,40 +10,39 @@ connection_params = {
     #'port': '5432'
 }
 
+def check_player_exists(cursor, player_id):
+    """Check if a player with the given ID exists in the database."""
+    cursor.execute("SELECT codename FROM players WHERE id = %s;", (player_id,))
+    return cursor.fetchone()  # Returns None if player doesn't exist
+
+def insert_player(cursor, player_id, codename):
+    """Insert a new player into the database."""
+    cursor.execute("INSERT INTO players (id, codename) VALUES (%s, %s);", (player_id, codename))
+
 try:
     # Connect to PostgreSQL
     conn = psycopg2.connect(**connection_params)
     cursor = conn.cursor()
 
-    # Execute a query
-    cursor.execute("SELECT version();")
+    for i in range(2):  # Loop twice to get input for two players
+        player_id = input(f"Enter Player {i+1} ID: ")
 
-    # Fetch and display the result
-    version = cursor.fetchone()
-    print(f"Connected to - {version}")
+        existing_player = check_player_exists(cursor, player_id)
 
-    # Example: creating a table
-    #cursor.execute('''
-    #    CREATE TABLE IF NOT EXISTS employees (
-    #        id SERIAL PRIMARY KEY,
-    #        name VARCHAR(100),
-    #        department VARCHAR(50),
-    #        salary DECIMAL
-    #    );
-    #''')
+        if existing_player:
+            print(f"Player {player_id} already exists with codename '{existing_player[0]}'.")
+        else:
+            codename = input("Enter your codename: ")
+            insert_player(cursor, player_id, codename)
+            print(f"New player added: {player_id} - {codename}")
 
-    # Insert sample data
-    cursor.execute('''
-        INSERT INTO players (id, codename)
-        VALUES (%s, %s);
-    ''', ('500', 'BhodiLi'))
-
-    # Commit the changes
+    # Commit changes
     conn.commit()
 
-    # Fetch and display data from the table
+    # Display all players
     cursor.execute("SELECT * FROM players;")
     rows = cursor.fetchall()
+    print("\nCurrent Players in Database:")
     for row in rows:
         print(row)
 

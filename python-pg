@@ -1,3 +1,5 @@
+# MAKE SURE PSYCOPG2 IS INSTALLED IN SOME WAY
+
 import psycopg2
 from psycopg2 import sql
 

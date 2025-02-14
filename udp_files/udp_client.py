@@ -1,36 +1,27 @@
 import socket
-import argparse
+import sys
+
+def send_message(target_ip, message, port=7500):
+    """Send a UDP message to the target IP on the specified port."""
+    # Create UDP socket
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    # Enable broadcast if target IP is the broadcast address
+    if target_ip == "255.255.255.255":
+        client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+    
+    # Convert the message to bytes and send it
+    bytes_to_send = str.encode(message)
+    client_socket.sendto(bytes_to_send, (target_ip, port))
+    print(f"Sent message '{message}' to {target_ip}:{port}")
 
 def main():
-    # Set up command-line arguments to choose network address and port.
-    parser = argparse.ArgumentParser(description="UDP Client for transmitting equipment codes and game control codes.")
-    parser.add_argument('--network', type=str, default="127.0.0.1", help="Network address to send UDP messages to (default: 127.0.0.1)")
-    parser.add_argument('--port', type=int, default=7500, help="UDP port to send messages to (default: 7500)")
-    args = parser.parse_args()
+    if len(sys.argv) < 3:
+        print("Usage: python udp_client.py <target_ip> <message>")
+        sys.exit(1)
+    
+    target_ip = sys.argv[1]
+    message = sys.argv[2]
+    send_message(target_ip, message)
 
-    serverAddressPort = (args.network, args.port)
-    bufferSize = 1024
-
-    # Create a UDP socket for the client.
-    UDPClientSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-
-    print("UDP Client started. Sending messages to {}:{}".format(args.network, args.port))
-    print("Enter an integer equipment code or game control code (for example, 202 for game start, 221 for game end).")
-    print("Type 'exit' to quit.")
-
-    while True:
-        user_input = input("Enter code: ")
-        if user_input.lower() == 'exit':
-            print("Exiting UDP Client.")
-            break
-        try:
-            # Validate input as an integer.
-            code = int(user_input)
-            message = str(code).encode()
-            UDPClientSocket.sendto(message, serverAddressPort)
-            print("Sent code {} to {}:{}".format(code, args.network, args.port))
-        except ValueError:
-            print("Invalid input. Please enter a valid integer.")
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,30 +1,65 @@
-This is a placeholder at the moment, I will update README instructions when full code has been compiled.
-I just went in below and added some stuff about how to make it works, feel free to change it however you want.
+# Phaser Laser Tag System
 
-Requirements
-============
--Python 3
--Pygame
--Psycopg2
--PostgreSQL
+## Team Members
+- Brady Morgan - https://github.com/Brady-TheAMo
 
-How to Install Dependencies
-===========================
-On the Debian Virtual Machine that already has PostgreSQL open the terminal.
-In the terminal type 'sudo apt-get install python3' to install python.
-You can then verify the installation by entering 'python3 --version' and then 'pip3 --version'.
-Pygame should install with python3, if not enter 'pip3 install pygame'. This will also server as a check for if it is installed.
-Psycopg2 will not come with python3, enter 'pip3 install psycopg2' to install it.
+- Eli Young - https://github.com/eliyoung1
 
-How to Run
-==========
-Download main.py, database.py, udp_server.py, and logo.jpg.
-In a terminal go to the directory you installed the downloaded the files to.
-Start the server by entering 'python3 udp_server.py'. This defaults to 0.0.0.0 to listen on all interfaces on port 7501.
-To start the server on a specific IP and Port enter 'python3 udp_server.py 127.0.0.1 5000'. The IP address still hass to be assigned to your machine.
-On a separate terminal go to the same directory.
-Start the application by entering 'python3 main.py'.
+- Kolby Stoll - https://github.com/KolbyStoll
 
-Testing
-=======
-udp_client is optional and can be used to test the UDP server separately.
+- Matthew Andrews - https://github.com/Matthew-C-Andrews
+
+## Overview
+
+This project is the main software for a laser tag system designed to run on a Debian Virtual Machine. The application is written in Python and uses:
+- **Pygame** for the graphical user interface,
+- **Psycopg2** for PostgreSQL database connectivity
+- **UDP sockets** for communication between system components.
+
+The application displays a splash screen on startup, then transitions into an entry screen where players can be added or updated. Equipment IDs are broadcast via UDP, and a separate UDP server is available to receive incoming messages.
+
+## Requirements
+- Python
+
+- Pygame
+
+- Psycopg2
+
+- PostgreSQL
+
+## How to Install Dependencies
+
+** On the Debian Virtual Machine that already has PostgreSQL, open a terminal.***
+1. Install Python 3 and Pip:
+   
+   `sudo apt-get install python3-pip`
+   
+    Verify with
+   
+   `python3 --version`
+   
+   `pip3 --version`
+3. Install Pygame:
+
+   `pip3 install pygame`
+5. Install Psycopg2:
+   
+   `pip3 install psycopg2-binary`
+
+## How to Run
+1. Download `main.py`, `database.py`, `udp_server.py`, and `logo.jpg` and in the terminal go to the directory you downloaded/installed the files to.
+2. Start the server by entering `python3 udp_server.py`. This defaults to 0.0.0.0 to listen on all interfaces on port 7501.
+
+   -Only testing functionality right now with udp_client or changing port in main.py since no player gameplay has been created yet.
+
+   -To start the server on a specific IP and Port enter `python3 udp_server.py 127.0.0.1 7501` or whatever IP and Port you choose. The IP address still hass to be assigned to your machine.
+3. In a seperate terminal go to the same directory you downloaded/installed the files to and enter 'python3 main.py' to start the application.
+
+## Testing UDP Server
+1. Download udp_server.py and udp_client.py
+2. In the terminal go to the install directory and run `python3 udp_server.py`
+
+   -How to use manual IP and Port in How to Run section.
+3. In a separate terminal go to the install directory and run `python3 udp_client.py 127.0.0.1 "Test Message"` as an example.
+
+The Client sends on Port 7501 and the Server recieves on Port 7501 by default. The Client requires an IP address and the message. The server listens on all local interfaces.

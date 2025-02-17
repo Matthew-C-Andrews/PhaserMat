@@ -56,10 +56,12 @@ The application displays a splash screen on startup, then transitions into an en
 3. In a separate terminal go to the same directory you downloaded/installed the files to and enter 'python3 main.py' to start the application.
 
 ## Testing UDP Server
-1. Download udp_server.py and udp_client.py
+1. Download `udp_server.py` and `udp_client.py`
 2. In the terminal go to the install directory and run `python3 udp_server.py`
 
-   -How to use manual IP and Port in How to Run section.
-3. In a separate terminal go to the install directory and run `python3 udp_client.py 127.0.0.1 "Test Message"` as an example.
+   -This will start the UDP server listening on all local interfaces on port 7501
+   
+   -For manual IP and Port use, refer to the How to Run section
+4. In a separate terminal go to the install directory and run `python3 udp_client.py 127.0.0.1 "Test Message"` as an example.
 
-The Client sends on Port 7501 and the Server receives on Port 7501 by default. The Client requires an IP address and the message. The server listens on all local interfaces.
+The Client sends on Port 7501 and the Server recieves on port 7501. The Server listens on all local interfaces. The Client requires an IP address and message as arguments.

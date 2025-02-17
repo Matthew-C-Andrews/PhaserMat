@@ -53,7 +53,7 @@ The application displays a splash screen on startup, then transitions into an en
    -Only testing functionality right now with udp_client or changing port in main.py since no player gameplay has been created yet.
 
    -To start the server on a specific IP and Port enter `python3 udp_server.py 127.0.0.1 7501` or whatever IP and Port you choose. The IP address still has to be assigned to your machine.
-3. In a separate terminal go to the same directory you downloaded/installed the files to and enter 'python3 main.py' to start the application.
+3. In a separate terminal go to the same directory you downloaded/installed the files to and enter `python3 main.py` to start the application.
 
 ## Testing UDP Server
 1. Download `udp_server.py` and `udp_client.py`

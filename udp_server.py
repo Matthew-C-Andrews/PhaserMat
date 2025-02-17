@@ -6,8 +6,6 @@ def main():
     local_ip = "0.0.0.0"
     local_port = 7501
 
-    # Check command-line arguments:
-    # Usage: python3 udp_server.py [listening_ip] [port]
     if len(sys.argv) > 1:
         local_ip = sys.argv[1]
     if len(sys.argv) > 2:

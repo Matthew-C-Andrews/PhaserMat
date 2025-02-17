@@ -29,7 +29,7 @@ The application displays a splash screen on startup, then transitions into an en
 
 ## How to Install Dependencies
 
-** On the Debian Virtual Machine that already has PostgreSQL, open a terminal.***
+** On the Debian Virtual Machine that already has PostgreSQL, open a terminal. **
 1. Install Python 3 and Pip:
    
    `sudo apt-get install python3-pip`
@@ -39,10 +39,10 @@ The application displays a splash screen on startup, then transitions into an en
    `python3 --version`
    
    `pip3 --version`
-3. Install Pygame:
+2. Install Pygame:
 
    `pip3 install pygame`
-5. Install Psycopg2:
+3. Install Psycopg2:
    
    `pip3 install psycopg2-binary`
 
@@ -52,8 +52,8 @@ The application displays a splash screen on startup, then transitions into an en
 
    -Only testing functionality right now with udp_client or changing port in main.py since no player gameplay has been created yet.
 
-   -To start the server on a specific IP and Port enter `python3 udp_server.py 127.0.0.1 7501` or whatever IP and Port you choose. The IP address still hass to be assigned to your machine.
-3. In a seperate terminal go to the same directory you downloaded/installed the files to and enter 'python3 main.py' to start the application.
+   -To start the server on a specific IP and Port enter `python3 udp_server.py 127.0.0.1 7501` or whatever IP and Port you choose. The IP address still has to be assigned to your machine.
+3. In a separate terminal go to the same directory you downloaded/installed the files to and enter 'python3 main.py' to start the application.
 
 ## Testing UDP Server
 1. Download udp_server.py and udp_client.py
@@ -62,4 +62,4 @@ The application displays a splash screen on startup, then transitions into an en
    -How to use manual IP and Port in How to Run section.
 3. In a separate terminal go to the install directory and run `python3 udp_client.py 127.0.0.1 "Test Message"` as an example.
 
-The Client sends on Port 7501 and the Server recieves on Port 7501 by default. The Client requires an IP address and the message. The server listens on all local interfaces.
+The Client sends on Port 7501 and the Server receives on Port 7501 by default. The Client requires an IP address and the message. The server listens on all local interfaces.

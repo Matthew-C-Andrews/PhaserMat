@@ -5,11 +5,6 @@ Notes from Brady:
 
 
 Notes from Matthew:
-  Initial UDP client and server set up for sending codes, just need integration with Database and Player Entry Screen
-  TODO: Integrate UDP functionality into the Player Entry Screen 
-    -When a player is added, call the UDP client's function to send that player's equipment code
-  TODO: Database integration
-    -After inserting a player into the Database, have a UDP message directly from database or as part of player entry logic
-    
-  I will go in and do these TODOs in the database/Player Entry Screen, I just put this here so everyone knows where the UDP part is at.
+  Splash screen and player entry screen were combined into main.py for a more seamless UI, this way it does not open 2 different terminal after one another.
+  The main.py should make it easier later because I added different game states.
   

@@ -1,7 +1,6 @@
 Notes from Brady:
-  player.sql is just the sql file on Sprint 2 (and also on the helper github I think)
-  python-pg seemed to be the sql database we are supposed to work with so I just built on top of that
-  the python-pg lets you enter an id into the database, and then does the check to see if it exists and stuff
+  Game screen is made, but right now it has no database connection or way to get into it from main. I have some code on my end
+  to do it but its a stop gap measure that will bug out the second the new player entry screen is made.
 
 
 Notes from Matthew:
